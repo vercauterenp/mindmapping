@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Basic//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svgRoot" width="100%" height="100%" viewBox="0 0 600 490" onload="initJS(evt)" version="1.1" baseProfile="basic">
+<title>Mind Mapper</title>
+<rect id="sframe" x="1" y="1" width="598" height="488" fill="#f0fff0" stroke="#000000"/>
+<g id="svgBody">
+	<script type="text/ecmascript"><![CDATA[
+	var svg_ns = "http://www.w3.org/2000/svg"
+	var doc,sBody,blkNum = 1,xt=192,yt=104,newT='+';
+
+	function initJS(evt){
+	var target = evt.target;
+	doc = target.ownerDocument;
+	sBody = doc.getElementById("svgBody");
+	}
+	
+	function addBlock(evt){
+	if (blkNum > 4) return;
+	var newG = doc.createElementNS(svg_ns, 'g');
+	newG.setAttribute('id', 'mmBlk'+blkNum);
+	var newRec = doc.createElementNS(svg_ns, 'rect');
+	newRec.setAttribute('id', 'mmRec'+blkNum);
+	
+	newRec.setAttribute('x', '1');
+	newRec.setAttribute('y', '1');
+	newRec.setAttribute('width', '55');
+	newRec.setAttribute('height', '32');
+	newRec.setAttribute('fill', 'yellow');
+	newRec.setAttribute('stroke', '#a00000');
+	newRec.setAttribute('stroke-width', '2');
+	newG.appendChild(newRec);
+	var newText = doc.createElementNS(svg_ns, 'text');
+	newText.setAttribute('id', 'mmTex'+blkNum);
+	newText.setAttribute('x', '4');
+	newText.setAttribute('y', '20');
+	newText.setAttribute('font-size', '9');
+	var textCont = doc.createTextNode("mind block"+blkNum);
+	newText.appendChild(textCont);
+	newG.appendChild(newText);
+	var newLine = doc.createElementNS(svg_ns, 'line');
+	if((blkNum & 1)==1) {
+		newLine.setAttribute('x1', '55');
+		newLine.setAttribute('y1', '1');
+		newLine.setAttribute('x2', '78');
+		newLine.setAttribute('y2', '-26');
+		} else {
+		newLine.setAttribute('x1', '1');
+		newLine.setAttribute('y1', '1');
+		newLine.setAttribute('x2', '-23');
+		newLine.setAttribute('y2', '-26');
+		}
+	newLine.setAttribute('stroke', '#a00000');
+	newLine.setAttribute('stroke-width', '2');
+	newG.appendChild(newLine);
+	newG.setAttribute('transform', 'translate('+xt+','+yt+')');
+	xt+=154;
+	sBody.appendChild(newG);
+	++blkNum;
+	if (blkNum==3){
+		yt = 163;
+		xt = 115;
+		}
+	}
+	
+	function newText(evt){
+	var ln = blkNum-1;
+	var stex = doc.getElementById("mmTex"+ln);
+	stex.textContent = "new "+newT+ln;
+	newT += '+';
+	}
+	//#c8e8ff
+	]]></script>
+<text font-size="20" stroke="none" fill="#a00000" x="222" y="28" >Mind Map Display</text>
+<line stroke-dasharray="4, 2, 2, 2" x1="190" y1="38" x2="400" y2="38" style="stroke:red;stroke-width:2"/>
+<g id="mmBlk0">
+<rect id="mmRec0" fill="yellow" stroke="#a00000" stroke-width="2" x="270" y="46" width="55" height="32"/>
+<text id="mmTex0" font-size="9" stroke="none" fill="#000000" x="274" y="64">mind block0</text>
+</g>
+
+<g id="toolBar1">
+<defs>
+	<linearGradient id="bluGrad" x1="0%" y1="0%" x2="20%" y2="100%">
+		<stop offset="0%" style="stop-color:#f4ffff;stop-opacity:1" />
+		<stop offset="100%" style="stop-color:#9a9aff;stop-opacity:1" />
+		</linearGradient>
+	</defs>
+	<rect x="483" y="3" width="113" height="46" stroke="#7d8c98" stroke-width="2" stroke-dasharray="1.4" fill="#ddccff" ry="4" rx="6" />
+	<text id="tbText1" font-size="10" stroke="none" fill="black" x="513" y="14" >Tool Bar One</text>
+	<g id="tbBut1" onclick="addBlock(evt)" cursor="pointer">
+		<rect id="tbbRec1" fill="url(#bluGrad)" stroke="#7878f0" stroke-width="1" x="491" y="18" width="45" height="14" ry="4" rx="6"/>
+		<text id="tbbTex1" font-size="9" stroke="none" fill="#4040e8" x="494" y="28">Add Block</text>
+		</g>
+	<g id="tbBut2" onclick="newText(evt)" cursor="pointer">
+		<rect id="tbbRec2" fill="url(#bluGrad)" stroke="#7878f0" stroke-width="1" x="545" y="18" width="44" height="14" ry="4" rx="6"/>
+		<text id="tbbTex2" font-size="9" stroke="none" fill="#4040e8" x="549" y="28">New Text</text>
+		</g>
+	<text id="tbText1" font-size="8" stroke="none" fill="black" x="487" y="42" >Buttons add and change the map</text>
+	</g>
+
+</g>
+</svg>

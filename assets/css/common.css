@@ -1,0 +1,48 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.draggable {
+    display: inline-block;
+    vertical-align: top;
+    border: 2px solid #111111;
+    border-radius: 4px;
+    background-color: whitesmoke;
+    position: absolute;
+    top: 20px;
+    left: 120px;
+    z-index: 500;
+}
+.handle {
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    font-size: 15px;
+    background-color: #1B1B1B;
+    background-image: linear-gradient(to bottom, #222222, #111111);
+    background-repeat: repeat-x;
+    cursor: move;
+    text-align: center;
+}
+#toolbox {
+    width: 200px;
+    top: 250px;
+    left: 220px;
+}
+.myInfo {
+    padding: 6px;
+}
+#slideout {
+    background: white;
+    border: 1px solid gray;
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    top: 25%;
+    left:-267px;
+    z-index: 999;
+}
+
+#slidecontent {
+    float:left;
+}
